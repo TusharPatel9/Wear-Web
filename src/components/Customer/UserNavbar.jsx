@@ -5,12 +5,15 @@ import { FaRegHeart } from "react-icons/fa";
 import { TiShoppingCart } from "react-icons/ti";
 import { CiShop } from "react-icons/ci";
 import { HiMenu, HiX } from "react-icons/hi";
+import { Link, useNavigate } from "react-router-dom";
 
 function UserNavbar() {
   const links = ["Men", "Women", "Kids", "Watch"];
 
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   // Detect scroll
   useEffect(() => {
@@ -27,11 +30,10 @@ function UserNavbar() {
       {/* NAVBAR */}
       <nav
         className={`fixed top-0 left-0 w-full z-50 h-16 flex items-center justify-between px-6 md:px-16 transition-all duration-300
-        ${
-          scrolled
+        ${scrolled
             ? "bg-white/70 backdrop-blur-md shadow-md"
             : "bg-white"
-        }`}
+          }`}
       >
         {/* LEFT SECTION */}
         <div className="flex items-center gap-10">
@@ -59,7 +61,8 @@ function UserNavbar() {
         <div className="hidden md:flex items-center gap-8 text-gray-600">
           <IoMdSearch className="text-xl cursor-pointer hover:text-teal-600 transition" />
 
-          <button className="flex items-center gap-2 bg-teal-600 text-white px-4 py-2 rounded-md font-medium hover:bg-teal-700 transition">
+          <button className="flex items-center gap-2 bg-teal-600 text-white px-4 py-2 rounded-md font-medium hover:bg-teal-700 transition"
+            onClick={() => { navigate("/login") }}>
             <CgProfile className="text-lg" />
             LOGIN
           </button>
@@ -93,7 +96,8 @@ function UserNavbar() {
                 {item}
               </li>
             ))}
-            <button className="bg-teal-600 text-white px-6 py-2 rounded-md">
+            <button className="bg-teal-600 text-white px-6 py-2 rounded-md"
+              onClick={() => { navigate("/login") }}>
               LOGIN
             </button>
           </ul>
